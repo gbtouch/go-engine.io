@@ -1,7 +1,5 @@
 # go-engine.io
 
-[![GoDoc](http://godoc.org/github.com/gbtouch/go-engine.io?status.svg)](http://godoc.org/github.com/gbtouch/go-engine.io) [![Build Status](https://travis-ci.org/gbtouch/go-engine.io.svg)](https://travis-ci.org/gbtouch/go-engine.io)
-
 go-engine.io is the implement of engine.io in golang, which is transport-based cross-browser/cross-device bi-directional communication layer for [go-socket.io](https://github.com/gbtouch/go-socket.io).
 
 It is compatible with node.js implement, and supported long-polling and websocket transport.
