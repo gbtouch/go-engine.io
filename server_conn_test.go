@@ -1,10 +1,10 @@
 package engineio
 
 import (
-	"github.com/googollee/go-engine.io/message"
-	"github.com/googollee/go-engine.io/parser"
-	"github.com/googollee/go-engine.io/polling"
-	"github.com/googollee/go-engine.io/websocket"
+	"github.com/gbtouch/go-engine.io/message"
+	"github.com/gbtouch/go-engine.io/parser"
+	"github.com/gbtouch/go-engine.io/polling"
+	"github.com/gbtouch/go-engine.io/websocket"
 	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"

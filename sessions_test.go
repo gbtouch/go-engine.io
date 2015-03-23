@@ -1,8 +1,9 @@
 package engineio
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestServerSessions(t *testing.T) {

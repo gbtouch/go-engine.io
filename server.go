@@ -5,11 +5,11 @@ import (
 	"crypto/md5"
 	"encoding/base64"
 	"fmt"
-	"github.com/gbtouch/go-engine.io/polling"
-	"github.com/gbtouch/go-engine.io/websocket"
 	"net/http"
 	"sync/atomic"
 	"time"
+
+	"github.com/gbtouch/go-engine.io/websocket"
 )
 
 type config struct {
@@ -33,9 +33,6 @@ type Server struct {
 
 // NewServer returns the server suppported given transports. server will use websocket as default.
 func NewServer() (*Server, error) {
-	if transports == nil {
-		transports = []string{"polling", "websocket"}
-	}
 	creaters := make(transportCreaters)
 	creaters["websocket"] = websocket.Creater
 	return &Server{
