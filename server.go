@@ -5,8 +5,8 @@ import (
 	"crypto/md5"
 	"encoding/base64"
 	"fmt"
-	"github.com/googollee/go-engine.io/polling"
-	"github.com/googollee/go-engine.io/websocket"
+	"github.com/gbtouch/go-engine.io/polling"
+	"github.com/gbtouch/go-engine.io/websocket"
 	"net/http"
 	"sync/atomic"
 	"time"
@@ -31,26 +31,17 @@ type Server struct {
 	currentConnection int32
 }
 
-// NewServer returns the server suppported given transports. If transports is nil, server will use ["polling", "websocket"] as default.
-func NewServer(transports []string) (*Server, error) {
+// NewServer returns the server suppported given transports. server will use websocket as default.
+func NewServer() (*Server, error) {
 	if transports == nil {
 		transports = []string{"polling", "websocket"}
 	}
 	creaters := make(transportCreaters)
-	for _, t := range transports {
-		switch t {
-		case "polling":
-			creaters[t] = polling.Creater
-		case "websocket":
-			creaters[t] = websocket.Creater
-		default:
-			return nil, InvalidError
-		}
-	}
+	creaters["websocket"] = websocket.Creater
 	return &Server{
 		config: config{
 			PingTimeout:   60000 * time.Millisecond,
-			PingInterval:  25000 * time.Millisecond,
+			PingInterval:  5000 * time.Millisecond,
 			MaxConnection: 1000,
 			AllowRequest:  func(*http.Request) error { return nil },
 			AllowUpgrades: true,
@@ -68,7 +59,7 @@ func (s *Server) SetPingTimeout(t time.Duration) {
 	s.config.PingTimeout = t
 }
 
-// SetPingInterval sets the interval of ping. Default is 25s.
+// SetPingInterval sets the interval of ping. Default is 5s.
 func (s *Server) SetPingInterval(t time.Duration) {
 	s.config.PingInterval = t
 }
